@@ -1,0 +1,100 @@
+<html>
+<head>
+	<script>
+	Date.prototype.Format = function(fmt){
+		var o =
+		{ 
+			"M+" : this.getMonth() + 1, //月份 
+			"d+" : this.getDate(), //日 
+			"h+" : this.getHours(), //小时 
+			"m+" : this.getMinutes(), //分 
+			"s+" : this.getSeconds(), //秒 
+			"q+" : Math.floor((this.getMonth() + 3) / 3), //季度 
+			"S" : this.getMilliseconds() //毫秒 
+		}; 
+		document.write(/(y+)/.test(fmt) + "<br/>" + RegExp.$1 +  "<br/>");
+		if (/(y+)/.test(fmt)) {
+			fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length)); 
+			document.writeln("fmt: " + fmt + "<br/>");
+		}
+		for (var k in o) 
+			if (new RegExp("(" + k + ")").test(fmt)) {
+				document.write(RegExp("(" + k + ")") +　"<br/>" + RegExp.$1.length + o[k] + "<br/>" );
+				fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length))); 
+        }
+		return fmt; 
+	}
+	var date = new Date();
+	document.write(date + "<br/>");
+	var date1 = date.Format("yyyy-MM-dd hh:mm:ss" + "<br/>");
+	document.write(date1);
+	var pa = "2";
+	switch(pa){
+		case "1": 
+			alert("1");
+			break;
+		case "2": 
+			//alert("2");
+		case "3": 
+			//alert("3");			
+	}
+	var a = {x:1,y:2,z:3};
+	var b = new Array();
+	var i = 0;
+	for(b[i++] in a){
+		document.write("name:" + b[i-1] + " value: " + a[b[i-1]] + "<br/>");
+	}
+	outerloop: 
+		for(var i = 0; i < 10; i++){
+			innerloop:
+				for(var j = 0; j < 10; j++){
+					if(j > 3) break;
+					if(i == 2) break innerloop;
+					if(i == 4) break outerloop;
+					document.write("i = " + i + " j = " + j + "<br/>");
+				}
+		}
+		document.write(f(2));
+		document.write(f);
+		var f = 0;
+		//if(f == 0) throw alert("wrong");
+		function f(x){
+			return x * x;
+		}
+		document.write(f);
+		try{
+			var n = prompt("Please enter an integer","");
+			alert(4/n);
+		}catch(ex){
+			throw ex.expression;
+		}
+	</script>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
